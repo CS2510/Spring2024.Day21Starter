@@ -22,6 +22,8 @@ class GameObject {
     /** The list of components in this game object */
     components = []
 
+    layer = 0
+
     /**
      * Create a new game object. Note that this also instantiate and adds the 
      * first component, an instance of `Transform` so that all game objects are

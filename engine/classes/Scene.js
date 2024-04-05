@@ -71,8 +71,15 @@ class Scene {
         ctx.fillStyle = this.backgroundColor;
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
+        let sortedGameObjects = [...this.gameObjects]
+        sortedGameObjects = sortedGameObjects.sort((a,b)=>a.layer-b.layer);
+
         //Call draw on all the game objects
-        for (const gameObject of this.gameObjects) {
+        for (const gameObject of sortedGameObjects) {
+            if(gameObject.layer == -1)
+                ctx.filter = "blur(2px)"
+            else
+                ctx.filter = "none"
             if (gameObject.draw) {
                 gameObject.draw(ctx)
             }
