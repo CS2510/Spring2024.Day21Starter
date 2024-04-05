@@ -7,13 +7,14 @@ import "/engine/geometry/Line2.js"
 import "/engine/geometry/Rectangle2.js"
 import "/engine/geometry/Circle2.js"
 
-import "/engine/components/Camera.js"
 import "/engine/components/Circle.js"
 import "/engine/components/Line.js"
 import "/engine/components/Point.js"
 import "/engine/components/Rectangle.js"
 import "/engine/components/Text.js"
 import "/engine/components/Transform.js"
+
+import "/engine/prefabs/Camera.js"
 
 
 import "/engine/static/Collisions.js"
@@ -54,6 +55,7 @@ class Engine {
     //Draw in world space
     Engine.currentScene.draw(ctx)
 
+
     if (!Engine.isSystemPaused) {
 
       //Call start on game objects that haven't been started
@@ -69,6 +71,9 @@ class Engine {
 
     //Update the input
     Input.update();
+
+    //Update the time
+    Time.update(ctx);
 
     
 
