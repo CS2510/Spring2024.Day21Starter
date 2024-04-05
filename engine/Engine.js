@@ -7,6 +7,7 @@ import "/engine/geometry/Line2.js"
 import "/engine/geometry/Rectangle2.js"
 import "/engine/geometry/Circle2.js"
 
+import "/engine/components/Camera.js"
 import "/engine/components/Circle.js"
 import "/engine/components/Line.js"
 import "/engine/components/Point.js"

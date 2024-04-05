@@ -28,6 +28,7 @@ class Scene {
     constructor(backgroundColor) {
         this.backgroundColor = backgroundColor
         this.hasStarted = false;
+
     }
 
     /**
@@ -36,8 +37,16 @@ class Scene {
      * @param {CanvasRenderingContext2D} ctx The current rendering context
      */
     _start(ctx) {
+
+
         if (!this.hasStarted) {
             this.hasStarted = true;
+
+            let cameraGameObject = new GameObject("CameraGameObject")
+            cameraGameObject.addComponent(new Camera());
+            GameObject.instantiate(cameraGameObject)
+
+
             if (this.start)
                 this.start(ctx);
             for (const gameObject of this.gameObjects) {
@@ -72,11 +81,11 @@ class Scene {
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
         let sortedGameObjects = [...this.gameObjects]
-        sortedGameObjects = sortedGameObjects.sort((a,b)=>a.layer-b.layer);
+        sortedGameObjects = sortedGameObjects.sort((a, b) => a.layer - b.layer);
 
         //Call draw on all the game objects
         for (const gameObject of sortedGameObjects) {
-            if(gameObject.layer == -1)
+            if (gameObject.layer == -1)
                 ctx.filter = "blur(2px)"
             else
                 ctx.filter = "none"
