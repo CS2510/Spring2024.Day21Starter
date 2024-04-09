@@ -1,5 +1,8 @@
 import "../prefabs/WallGameObject.js"
 import "../components/KeyboardComponent.js"
+import "../components/PointConstraintsComponentTrivial.js"
+import "../components/SaveTransform.js"
+import "../components/CheckTransform.js"
 
 const scale = 250;
 const margin = 50
@@ -9,8 +12,10 @@ class PointGameObject extends GameObject{
   constructor(){
     super();
     this.addComponent(new Point())
+    this.addComponent(new SaveTransform())
     this.addComponent(new KeyboardComponent())
-    this.addComponent(new PointConstraintsComponent())
+    // this.addComponent(new PointConstraintsComponentTrival())
+    this.addComponent(new CheckTransform())
   }
   start(ctx){
     this.transform.x = scale+margin-margin*2
@@ -20,19 +25,7 @@ class PointGameObject extends GameObject{
   }
 }
 
-class PointConstraintsComponent extends Component{
-  update(ctx){
-    if(this.transform.x < margin*2)
-      this.transform.x = margin*2;
-    if(this.transform.y < margin*2)
-      this.transform.y = margin*2
-    if(this.transform.x > scale*2)
-      this.transform.x = scale*2
-    if(this.transform.y > scale * 2)
-      this.transform.y = scale*2
-  }
 
-}
 
 /** The main scene in our game */
 class MainScene extends Scene {
