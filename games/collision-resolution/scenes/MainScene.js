@@ -34,7 +34,7 @@ class PointGameObject extends GameObject {
   }
   start(ctx) {
     this.transform.x = scale + margin - margin * 2
-    this.transform.y = scale + margin - margin * 2
+    this.transform.y = scale + margin - margin * 2+10
     super.start()
 
   }
