@@ -42,9 +42,7 @@ class Scene {
         if (!this.hasStarted) {
             this.hasStarted = true;
 
-            let cameraGameObject = new Camera()
-            
-            GameObject.instantiate(cameraGameObject)
+            //TODO: Create a camera
 
 
             if (this.start)
@@ -80,26 +78,21 @@ class Scene {
         ctx.fillStyle = this.backgroundColor;
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
-        ctx.save();
-        // ctx.scale(Camera.main.transform. scaleX, Camera.main.transform.scaleY)
-        ctx.translate(-Camera.main.transform.x, -Camera.main.transform.y)
+        //TODO: save state
+        //TODO: Translate for the camera
 
-        let sortedGameObjects = [...this.gameObjects]
-        sortedGameObjects = sortedGameObjects.sort((a, b) => a.layer - b.layer);
+        //TODO: Sort layers
 
         //Call draw on all the game objects
-        for (const gameObject of sortedGameObjects) {
-            if (gameObject.layer == -1)
-                ctx.filter = "blur(2px)"
-            else
-                ctx.filter = "none"
+        for (const gameObject of this.gameObjects) {
+            //TODO: Setup blur if needed
             if (gameObject.draw) {
                 gameObject.draw(ctx)
             }
 
         }
 
-        ctx.restore();
+        //TODO: restore state
     }
 }
 

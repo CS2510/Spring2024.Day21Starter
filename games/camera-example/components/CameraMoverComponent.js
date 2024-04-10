@@ -3,11 +3,8 @@ class CameraMoverComponent extends Component{
 
   }
   update(ctx){
-    Camera.main.transform.x += Time.deltaTime * 20;
-    // Camera.main.transform.scaleX = 1 + Math.cos(Time.time)
-    let zoom = 10
-    Camera.main.transform.scaleX = zoom
-    Camera.main.transform.scaleY = zoom
+    //TODO: Move the camera
+    //TODO: Scale the camera
   }
   
 }
